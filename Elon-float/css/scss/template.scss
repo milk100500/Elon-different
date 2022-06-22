@@ -1,0 +1,610 @@
+
+
+/* IMPORTS(STArT) */
+
+@use 'sass:math';
+@import 'components.scss';
+
+/* IMPORTS(END) */
+
+/* СТАНДАРТНАЯ НАСТРОЙКА ПРОЕКТА(START) */
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: $fontFamily, sans-serif;
+}
+
+body{
+    background-color: $backgroundColor !important;
+    overflow-x: hidden;
+    line-height: 1 !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: 700 !important;
+    margin: 0;
+    padding: 0;
+    line-height: 1 !important;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0 !important;
+}
+
+li{
+    list-style-type: none;
+    a{
+        text-decoration: none !important;
+        color: $navLinksColor;
+        max-width: 100px;
+    }
+}
+
+.wrapper{
+    min-height: 100%;
+}
+
+/* СТАНДАРТНАЯ НАСТРОЙКА ПРОЕКТА(END) */
+
+
+/* HEADER(START) */
+
+.header{
+    border-bottom: 1px solid $headerBorderColor;
+    background-color: $headerBackgroundColor;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 50;
+    font-size: $standartFontSize;
+
+    &_container{
+        padding: 0 5px;
+        height: 100px;
+
+        &::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
+
+    &_logo{
+        float: left;
+        position: relative;
+        width: 315px;
+        height: 100%;
+
+        img{
+            margin: 32px 0 0 35px;
+            width: 88%;
+        }
+
+        &:after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: url("../../content/images/corners.png");
+        }
+    }
+}
+
+.burger{
+    margin: 33px 0;
+    float: right;
+    display: none;
+    width: 50px;
+
+    span{
+        display: block;
+        width: 100%;
+        height: 5px;
+        background: $burgerColor;
+
+        &:not(:last-child){
+            margin-bottom: 10px;
+        }
+    }
+}
+
+/* ССЫЛКИ(START) */
+
+.header_nav{
+    margin: 43px 0;
+    float: right;
+
+    .nav_list{
+        &::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
+
+    .nav_item{
+        float: left;
+    }
+    .nav_item:not(:last-child){
+        padding-right: 40px;
+    }
+
+    .nav_link{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+        height: 30px;
+        position: relative;
+        transition: color 0.5s;
+        white-space: nowrap;
+
+        &:hover{
+            color: $navLinkHoverColor;
+        }
+
+        &:after{
+            width: 0px;
+            position: absolute;
+            bottom: -11px;
+            left: 0;
+            height: 2px;
+            background-color: $navLinkHoverAfterColor;
+            content: "";
+            transition: width 0.3s ease-out;
+        }
+
+        &:hover:after{
+            width: 100%;
+        }
+    }
+}
+
+/* ССЫЛКИ(END) */
+
+/* HEADER(END) */
+
+/* MAIN(START) */
+
+.main{
+    position: relative;
+}
+.page{
+    padding: 170px 5px 95px 5px;
+    color: #FFFFFF;
+    background-image: url('../../content/images/bgImg.png');
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-attachment: scroll;
+    background-position: center;
+
+    &:before{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 70%;
+        width: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+    }
+
+    &_container{
+        display: block;
+
+        &::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
+
+    &_header{
+        float: left;
+
+        &-travel {
+            text-align: left;
+            padding: 30px 0;
+
+            h1{
+                font-size: $titleFontSize - 10;
+                text-transform: uppercase;        
+                @include redGradient();
+            }
+
+            h2{
+                @include redGradient();
+            }
+        }
+
+        &-start{
+            text-align: left;
+            position: relative;
+            padding: 10px 0;
+            opacity: 1;
+
+            &:after{
+                position: absolute;
+                content: url("../../content/images/lineStart.png");
+                left: 150px;
+                top: 50px;
+                z-index: 3;
+            } 
+
+            .start_text{
+                float: left;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
+            
+                transition: opacity 0.5s;
+                position: relative;
+                padding: 15px 20px;
+                font-size: $standartFontSize;
+                cursor: pointer;
+                z-index: 4;
+                opacity: 0.5;
+
+                &:hover{
+                    opacity: 1;
+                }
+
+                &:before{
+                    left: -6px;
+                    top: -10px;
+                    content: url("../../content/images/glare.png");
+                    position: absolute;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+    .benefits{
+        float: right;
+        text-align: right;
+
+        &::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        &_container{
+            float: right;
+            max-width: 400px;
+
+            &::after{
+                content: '';
+                clear: both;
+                display: block;
+            }
+        }
+        
+
+        &_content{
+            border: 1px solid rgba(233,233,233, 0.0);
+            text-align: center;
+            transition: border-right 0.7s, border-bottom 0.7s, border-top 0.7s, border-left 0.7s, -webkit-box-shadow 0.7s, -moz-box-shadow 0.7s, box-shadow 0.7s;
+            overflow: hidden;
+            position: relative;
+            float: left;
+            padding: 30px 0;
+            cursor: pointer;
+
+        }
+
+        &_top, &_center, &_bottom{
+            box-sizing: border-box;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden; 
+            display: inline-block;
+            min-width: 160px;
+        }
+
+        &_center{
+            font-size: $titleFontSize;
+            margin-bottom: 0;
+            margin-top: 30px;
+
+            span{
+                font-size: math.div($titleFontSize, 3);
+            }
+        }
+
+        &_row{
+            float: left;
+            width: 200px;
+            height: 200px;
+            padding: 5px;
+
+            #benefit_block1{
+                @include boxGradient(-15px, -15px, border-right, border-bottom, 'no');
+
+                &:hover{
+                    @include boxGradient(-25px, -25px, border-right, border-bottom, 'yes');
+                }
+            }
+            
+            #benefit_block2{
+                @include boxGradient(15px, -15px, border-left, border-bottom, 'no');
+
+                &:hover{
+                    @include boxGradient(25px, -25px, border-left, border-bottom, 'yes');
+                }
+            }
+            
+            #benefit_block3{
+                @include boxGradient(-15px, 15px, border-right, border-top, 'no');
+
+                &:hover{
+                    @include boxGradient(-25px, 25px, border-right, border-top, 'yes');
+                }
+            }
+            
+            #benefit_block4{
+                @include boxGradient(15px, 15px, border-left, border-top, 'no');
+
+                &:hover{
+                    @include boxGradient(25px, 25px, border-left, border-top, 'yes');
+                }
+            }
+        }
+    }
+}
+
+.no-light{
+    transition: opacity 1s;
+    opacity: 0.5;
+
+    &:hover{
+        opacity: 1;
+    }
+}
+
+.video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: 1s;
+    opacity: 0;
+
+    &_mars{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.background{
+    position: relative;
+
+    &_img{
+        position: fixed;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+
+        &-mars{
+            position: absolute;
+            top: 330px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            z-index: 2;
+            transition: 0.5s;
+        }
+    }
+
+    &_mars-video{
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        z-index: 40;
+    }
+}
+
+/* MAIN(END) */
+
+/* МЕДИА ЗАПРОСЫ(START) */
+
+@media (max-width: 1199px) {
+    .header_nav{
+
+        .nav_item:not(:last-child){
+            padding-right: 20px;
+        }
+    }
+
+    .page{
+        background-attachment: fixed;
+
+        .start_text{
+            float: none;
+            margin: 0 auto;
+        }
+
+        &_header{
+            float: none;
+
+            div{
+                text-align: center;
+            }
+
+            &-travel h1{
+                font-size: $titleFontSize;
+            }
+
+            &-start:after{
+                display: none;
+            }
+        }
+
+        .benefits{
+            float: none;
+            max-width: 440px;
+            margin: 50px auto 0;
+
+            &_container{
+                float: none;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .no-light{
+        opacity: 1;
+    }
+
+    .background{
+        &_img-mars{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 991px){
+    .burger{
+        display: inline-block;
+    }
+
+    .header_nav{
+        background-color: $modalNavBackgroundColor;
+        padding: 10px;
+        border-radius: 15px;
+        font-size: $standartFontSize + 5;
+        display: none;
+        position: fixed;
+        right: 0;
+        top: 15px;
+        height: 100%;
+        width: 200px;
+        justify-content: center;
+
+        .nav_list{
+            max-width: 100px;
+        }
+
+        .nav_item{
+            margin-top: 25px;
+        }
+
+        .nav_link{
+            float: right;
+        }
+    }
+
+    .page{
+
+        .benefits{
+            max-width: 440px;
+            margin: 25px auto;
+        }
+    }
+
+    .benefits{
+        max-width: 440px;
+    }
+}
+
+@media (max-width: 575px) {
+
+
+    .header{
+        &_logo img{
+            margin-left: 0;
+        }
+        &_logo:after{
+            content: none;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .page{
+        .benefits{
+            max-width: 100%;
+            float: none;
+
+            &_row{
+                float: left;
+                width: 50%;
+            }
+        }
+        &_header-travel{
+            h1{
+                font-size: math.div($titleFontSize, 1.5);
+            }
+
+            h2{
+                font-size:  math.div($titleFontSize, 3);
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .page{
+        .benefits{
+            &_row{
+                float: left;
+                width: 100%;
+            }
+        }
+    }
+    .custom-logo{
+        max-width: 137.5px;
+        max-height: 17.5px;
+
+        &-link:after{
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .burger{
+        margin: 20px 0;
+    }
+    .header{
+        height: 75px;
+
+        &_container{
+            height: 100%;
+
+            &::after{
+                content: '';
+                clear: both;
+                display: block;
+            }
+        }
+        &_logo{
+            width: 200px;
+            margin: 25px 0;
+            height: auto;
+
+            img{
+                margin: 0;
+            }
+
+            &:after{
+                display: none;
+            }
+        }
+    }
+    .page_header-travel h1{
+            font-size: $standartFontSize * 2;
+        }
+}
+
+/* МЕДИА ЗАПРОСЫ(END) */

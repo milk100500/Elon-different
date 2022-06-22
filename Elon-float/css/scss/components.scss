@@ -1,0 +1,48 @@
+/* VARIABLES(START) */
+
+$fontFamily: 'Lato';
+$standartFontSize: 15px;
+$titleFontSize: 60px;
+$backgroundColor: black;
+$navLinksColor: #FFF;
+$navLinkHoverColor: rgb(169, 169, 169);
+$navLinkHoverAfterColor: rgb(61, 61, 61);
+$headerBackgroundColor: rgba(0,0,0, 0.2);
+$headerBorderColor: rgba(233,233,233, 0.2);
+$modalNavBackgroundColor: rgba(0,0,0,0.5);
+$burgerColor: #FFF;
+$pageTextColor: #FFF;
+/* -25px(1) 25px(1) 25px(2) 25px(1) */
+
+
+
+
+/* VARIABLES(END) */
+
+/* MIXINS(START) */
+
+@mixin redGradient {
+    letter-spacing: 0.08vw;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,76,0,0.9251050762101716) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin boxGradient($cornerX, $cornerY, $border1, $border2, $active: 'no') {
+    @if($active == 'yes'){
+        #{$border1}: 1px solid rgba(252, 252, 252, 0.4);
+        #{$border2}: 1px solid rgba(252, 252, 252, 0.4);
+        -webkit-box-shadow: $cornerX $cornerY 90px -60px rgba(255, 255, 255, 0.9) inset;
+        -moz-box-shadow: $cornerX $cornerY 90px -60px rgba(255, 255, 255, 0.9) inset;
+        box-shadow: $cornerX $cornerY 90px -60px rgba(255, 255, 255, 0.9) inset;
+    } @else{
+        #{$border1}: 1px solid rgba(252, 252, 252, 0);
+        #{$border2}: 1px solid rgba(252, 252, 252, 0);
+        -webkit-box-shadow: $cornerX $cornerY 90px -60px rgba(255, 255, 255, 0.4) inset;
+        -moz-box-shadow: $cornerX $cornerY 90px -60px rgba(255, 255, 255, 0.4) inset;
+        box-shadow: $cornerX $cornerY 90px -60px rgba(255, 255, 255, 0.4) inset;
+    }
+}
+
+/* MIXINS(END) */
